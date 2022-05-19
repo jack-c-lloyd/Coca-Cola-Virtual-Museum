@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta -->
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Title -->
+		<title>The Coca-Cola Virtual Museum</title>
+		<!-- CSS -->
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+		<link type="text/css" rel="stylesheet" href="css/x3dom.css" />
+		<link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
+		<!-- JavaScript -->
+		<script type="text/javascript" src="js/jquery.min.js" onerror="alert('Unable to load jQuery!')"></script>
+		<!-- <script type="text/javascript" src="js/popper.js" onerror="alert('Unable to load Popper!')"></script> -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+			integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+			crossorigin="anonymous"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" onerror="alert('Unable to load Bootstrap!')"></script>
+		<script type="text/javascript" src="js/x3dom.js" onerror="alert('Unable to load x3dom!')"></script>
+		<script type="text/javascript" src="https://kit.fontawesome.com/41440733ce.js" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="js/controller.js" onerror="alert('Unable to load MVC controller!')"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<header class="bg-light logo-container">
+			<span>THE</span>
+			<span>
+				<span>1oca</span>
+				<span>Cola</span>
+			</span>
+			<span>VIRTUAL MUSEUM</span>
+		</header>
+		<!-- Navigation Bar -->
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom border-primary sticky-top">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content"
+				aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fa-solid fa-bars"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbar-content">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item" id="navbar-home">
+						<a class="nav-link" onclick="ShowHome()"> Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item" id="navbar-journal">
+						<a class="nav-link" onclick="ShowJournal()"> Journal </a>
+					</li>
+					<li class="nav-item" id="navbar-github">
+						<a class="nav-link" href="https://github.com/Jack-C-Lloyd/Mobile-3D-Applications"> GitHub </a>
+					</li>
+					<li class="nav-item dropdown" id="navbar-museum">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"> Virtual Museum &nbsp;<i class="fa-solid fa-caret-down"></i>
+						</a>
+						<div class="dropdown-menu bg-dark coca-cola" aria-labelledby="navbarDropdown">
+							<h6 class="dropdown-header">By Brand</h6>
+							<a class="dropdown-item bg-dark text-light" onclick="ShowMuseum(0, 0)"> Coca-Cola Original Taste </a>
+							<a class="dropdown-item bg-dark text-light" onclick="ShowMuseum(1, 0)"> Coca-Cola Zero Sugar </a>
+							<a class="dropdown-item bg-dark text-light" onclick="ShowMuseum(2, 0)"> Diet Coke </a>
+							<div class="dropdown-divider border-primary"></div>
+							<h6 class="dropdown-header">By Model</h6>
+							<a class="dropdown-item bg-dark text-light" onclick="ShowMuseum(0, 0)"> Bottle (500ml) </a>
+							<a class="dropdown-item bg-dark text-light" onclick="ShowMuseum(0, 1)"> Can (330ml) </a>
+						</div>
+					</li>
+				</ul>
+				<form class="form-inline">
+					<input class="form-control mr-sm-2 bg-dark border-light text-light" type="text" placeholder="Search..."
+						aria-label="Search" id="search">
+					<button class="btn btn-outline-light" type="button" onclick="Search(document.getElementById('search').value)"
+						)>
+						<i class="fa-solid fa-magnifying-glass"></i></button>
+				</form>
+			</div>
+		</nav>
+		<!-- Home -->
+		<div class="container-fluid" id="container-home">
+			<div class="row">
+				<div class="col p-4 text-center bg-dark text-light">
+					<h4>News</h4>
+				</div>
+			</div>
+			<div class="row bg-dark">
+				<div class="col p-0">
+					<div id="newsCarouselIndicators" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#newsCarouselIndicators" data-slide-to="0" class="active"></li>
+							<li data-target="#newsCarouselIndicators" data-slide-to="1"></li>
+							<li data-target="#newsCarouselIndicators" data-slide-to="2"></li>
+						</ol>
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<img class="d-block w-100" src="images/news-love-story.jpg" alt="Love Story">
+								<div class="carousel-caption">
+									<h5 class="outline">"Love" Story</h5>
+									<p class="outline">Coca-Cola Supports Marriage Equality in Australia With Limited-Edition Cans</p>
+									<a class="btn btn-outline-light"
+										href="https://www.coca-colacompany.com/news/coke-supports-marriage-equality-in-australia">News &
+										Articles</a>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<img class="d-block w-100" src="images/news-coca-cola-zero-sugar-byte.jpg"
+									alt="Coca-Cola Zero Sugar Byte">
+								<div class="carousel-caption">
+									<h5 class="outline">Coca-Cola Zero Sugar Byte</h5>
+									<p class="outline">Coca-Cola Creations Gaming-Inspired Coca-Cola Zero Sugar Byte</p>
+									<a class="btn btn-outline-light"
+										href="https://www.coca-colacompany.com/news/coca-cola-creations-zero-sugar-byte-launch">News &
+										Articles</a>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<img class="d-block w-100" src="images/news-bill-nye.jpg" alt="Coca-Cola Zero Sugar Byte">
+								<div class="carousel-caption">
+									<h5 class="outline">Bill Nye the Science Guy</h5>
+									<p class="outline">Coca-Cola Teams Up With Bill Nye to Demystify Recycling</p>
+									<a class="btn btn-outline-light"
+										href="https://www.coca-colacompany.com/news/coca-cola-recycling-film-closed-loop-with-bill-nye">News
+										& Articles</a>
+								</div>
+							</div>
+						</div>
+						<a class="carousel-control-prev" href="#newsCarouselIndicators" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#newsCarouselIndicators" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Journal -->
+		<div class="container-fluid" id="container-journal">
+			<div class="row">
+				<div class="col p-4 text-center bg-dark text-light">
+					<h4>Journal</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col p-4">
+					<h6 class="font-weight-bold">Deeper Understanding</h6>
+					<p>Autodesk 3ds Max is only available for Windows; due to a lack of ease-of-access to said operating system, I
+						opted to use an alternative production pipeline in which I utilised Autodesk Maya and Blender instead of
+						Autodesk 3ds Max, and created textures in Adobe Photoshop. The models were created in Autodesk Maya by incorporating a mixture of hard-surface and soft-surface modelling techniques, including—for example—the use of curves to loft NURBS (Non-Uniform Rational B-Splines) surfaces and converting them into polygons. One technique is manually editing the polygons with bridges (i.e., connecting two-or-more edges), bevels,
+						cuts, extrusions, and stitches. Another technique is using deformers to organically shape the geometry. Once modelled, simple UV unwrapping was achieved by adjusting the settings of cylindrical and planar UV
+						projections. Once unwrapped, said UV maps were exported and imported into Photoshop. The textures were
+						created with a blend of hand-edited public-domain images and officially branded logos. See the screenshots below for further details.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col p-4 text-center bg-dark text-light">
+					<h4>Screenshots</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 p-2">
+					<div class="card">
+						<img class="card-img-top" src="./images/photoshop-references.png" alt="Photoshop: References">
+						<div class="card-body">
+							<h5 class="card-title">Photoshop: References</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Creating the reference images</h6>
+							<p class="card-text">Adobe Photoshop was used to create front, side, and top references images for the bottle and can; corresponding to viewports in the 3D modelling suite.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 p-2">
+					<div class="card">
+						<img class="card-img-top" src="./images/maya-can-references.png" alt="Maya: References">
+						<div class="card-body">
+							<h5 class="card-title">Maya: References</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Setting up the reference images</h6>
+							<p class="card-text">In Autodesk Maya, the front, side, and top references images were used in a 3-plane setup, corresponding to viewports, as shown.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 p-2">
+					<div class="card">
+						<img class="card-img-top" src="./images/maya-bottle-wireframes.png"
+							alt="Maya: Smooth Polygon Mesh">
+						<div class="card-body">
+							<h5 class="card-title">Maya: Smooth Polygon Mesh</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Converting from low-poly to high-poly</h6>
+							<p class="card-text">For the bottle, a low-poly cylinder formed the basic shape by aligning with the reference images, and was subdivided to create the high-poly model.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 p-2">
+					<div class="card">
+						<img class="card-img-top" src="./images/maya-can-wireframes.png"
+							alt="Maya: Curves, Surfaces, and Polygons">
+						<div class="card-body">
+							<h5 class="card-title">Maya: Curves, Surfaces, and Polygons</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Converting from curves/surfaces to polygons</h6>
+							<p class="card-text">For the can, curves were used to loft surfaces, of which were converted to polygons, and manually bridged, bevelled, cut, extruded, and stitched.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 p-2">
+					<div class="card">
+						<img class="card-img-top" src="./images/maya-can-uvs-wireframe.png" alt="Maya: UV Unwrapping">
+						<div class="card-body">
+							<h5 class="card-title">Maya: UV Unwrapping</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Unwrapping the UV map</h6>
+							<p class="card-text">To unwrap the UV maps, cylindrical and planar UV projections were used by setting the horizontal sweep, image centre, and image scale.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 p-2">
+					<div class="card">
+						<img class="card-img-top" src="./images/photoshop-textures.png" alt="Photoshop: Textures">
+						<div class="card-body">
+							<h5 class="card-title">Photoshop: Textures</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Creating the textures</h6>
+							<p class="card-text">The unwrapped UV maps were exported from Autodesk Maya and imported into Adobe Photoshop, used to create the textures for the bottles and cans.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 p-2">
+					<div class="card">
+						<img class="card-img-top" src="./images/maya-can-uvs-textured.png" alt="The UV set of the can.">
+						<div class="card-body">
+							<h5 class="card-title">Maya: UV Adjustments</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Adjusting the UV maps</h6>
+							<p class="card-text">Once textured, the UV maps were adjusted to fix any alignment and/or bleeding issues, usually by slightly scaling the UVs to fit just within areas.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 p-2">
+					<div class="card">
+						<img class="card-img-top" src="./images/maya-can-textured.png" alt="Maya: Textures">
+						<div class="card-body">
+							<h5 class="card-title">Maya: Textures</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Applying the textures to materials</h6>
+							<p class="card-text">The textures were applied to Blinn-typed materials for each of the bottle and can models, setting the properties for specular highlights.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 p-2">
+					<div class="card">
+						<img class="card-img-top" src="./images/blender-can.png" alt="Blender: Cameras and Lights">
+						<div class="card-body">
+							<h5 class="card-title">Blender: Cameras and Lights</h5>
+							<h6 class="card-subtitle mb-2 text-muted">Converting from FBX to x3dom</h6>
+							<p class="card-text">Since Autodesk Maya does not support the x3dom, Blender was used to rig the cameras and lights, and subsequently export to the .x3dom file format.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Virtual Museum -->
+		<div class="container-fluid" id="container-museum">
+			<div class="row">
+				<div class="col p-4 text-center bg-dark text-light">
+					<h4>Virtual Museum</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 order-1 order-lg-2 p-4">
+					<div class="card bg-light border-dark h-100">
+						<div class="card-header font-weight-bold text-center"> Viewport </div>
+						<div class="card-body p-0">
+							<x3d>
+								<scene>
+									<!-- <Background DEF="WO_World" groundColor="0.051 0.051 0.051" skyColor="0.051 0.051 0.051" /> -->
+									<Transform DEF="Camera_TRANSFORM" translation="0 0 0" scale="1.000000 1.000000 1.000000"
+										rotation="0 0 0 0">
+										<orientationInterpolator DEF="Rotator" key="0 0.25 0.5 0.75 1"
+											keyValue="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" id="Rotator">
+										</orientationInterpolator>
+										<timeSensor DEF="RotationTimer" cycleInterval="4" loop="true" enabled="true" first="true"
+											id="model__RotationTimer">
+										</timeSensor>
+										<route fromNode="RotationTimer" fromField="fraction_changed" toNode="Rotator"
+											toField="set_fraction">
+										</route>
+										<route fromNode="Rotator" fromField="value_changed" toNode="Camera_TRANSFORM"
+											toField="set_rotation">
+										</route>
+										<Viewpoint DEF="CA_Camera" centerOfRotation="0 0 0" position="0 0 3" orientation="0 0 0 0"
+											fieldOfView="0.691" />
+									</Transform>
+									<Switch whichChoice="0" id="switcher">
+										<inline url="x3d/bottle-coca-cola-original-taste.x3d"></inline>
+										<inline url="x3d/bottle-coca-cola-zero-sugar.x3d"></inline>
+										<inline url="x3d/bottle-diet-coke.x3d"></inline>
+										<inline url="x3d/can-coca-cola-original-taste.x3d"></inline>
+										<inline url="x3d/can-coca-cola-zero-sugar.x3d"></inline>
+										<inline url="x3d/can-diet-coke.x3d"></inline>
+									</Switch>
+								</scene>
+							</x3d>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 order-2 order-lg-3 p-4 text-lg-left text-center">
+					<h5 class="font-weight-bold">
+						<i class="fa-solid fa-sliders"></i>&ensp;Settings
+					</h5>
+					<hr />
+					<h6 class="font-weight-bold">Animation</h6>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-outline-dark">
+							<input type="radio" name="options" id="verticies" autocomplete="off" onchange="SetRotationX()"> Rotate X
+							</input>
+						</label>
+						<label class="btn btn-outline-dark">
+							<input type="radio" name="options" id="Edges" autocomplete="off" onchange="SetRotationY()"> Rotate Y
+							</input>
+						</label>
+						<label class="btn btn-outline-dark">
+							<input type="radio" name="options" id="option3" autocomplete="off" onchange="SetRotationZ()"> Rotate Z
+							</input>
+						</label>
+						<label class="btn btn-outline-dark active">
+							<input type="radio" name="options" id="option3" autocomplete="off" onchange="SetRotationOff()" checked>
+							Off </input>
+						</label>
+					</div>
+					<hr />
+					<h6 class="font-weight-bold">Render Mode</h6>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-outline-dark">
+							<input type="radio" name="options" id="verticies" autocomplete="off" onchange="SetPointsMode(1)">
+							Verticies </input>
+						</label>
+						<label class="btn btn-outline-dark">
+							<input type="radio" name="options" id="Edges" autocomplete="off" onchange="SetPointsMode(2)"> Edges
+							</input>
+						</label>
+						<label class="btn btn-outline-dark active">
+							<input type="radio" name="options" id="option3" autocomplete="off" onchange="SetPointsMode(0)" checked>
+							Faces </input>
+						</label>
+					</div>
+					<hr />
+					<h6 class="font-weight-bold">Viewport</h6>
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-outline-dark" onclick="SetViewportFront()">Front</button>
+						<button type="button" class="btn btn-outline-dark" onclick="SetViewportBack()">Back</button>
+						<button type="button" class="btn btn-outline-dark" onclick="SetViewportLeft()">Left</button>
+						<button type="button" class="btn btn-outline-dark" onclick="SetViewportRight()">Right</button>
+						<button type="button" class="btn btn-outline-dark" onclick="SetViewportTop()">Top</button>
+						<button type="button" class="btn btn-outline-dark" onclick="SetViewportBottom()">Bottom</button>
+					</div>
+				</div>
+				<div class="col-lg-4 order-3 order-lg-1 p-4 text-lg-right text-center">
+					<h5 class="font-weight-bold"><i class="fa-solid fa-bars"></i>&ensp;Selection</h5>
+					<hr />
+					<h6 class="font-weight-bold">Brand</h6>
+					<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons" id="selection-brand">
+						<label class="btn btn-outline-dark active text-lg-right text-center">
+							<input type="radio" name="options" id="verticies" autocomplete="off" onchange="SetBrand(0)" checked>
+							Coca-Cola Original Taste </input>
+						</label>
+						<label class="btn btn-outline-dark text-lg-right text-center">
+							<input type="radio" name="options" id="Edges" autocomplete="off" onchange="SetBrand(1)"> Cola-Cola Zero
+							Sugar </input>
+						</label>
+						<label class="btn btn-outline-dark text-lg-right text-center">
+							<input type="radio" name="options" id="option3" autocomplete="off" onchange="SetBrand(2)"> Diet Coke
+							</input>
+						</label>
+					</div>
+					<hr />
+					<h6 class="font-weight-bold">Model</h6>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons" id="selection-model">
+						<label class="btn btn-outline-dark active">
+							<input type="radio" name="options" id="verticies" autocomplete="off" onchange="SetModel(0)" checked>
+							Bottle (500ml) </input>
+						</label>
+						<label class="btn btn-outline-dark">
+							<input type="radio" name="options" id="Edges" autocomplete="off" onchange="SetModel(1)"> Can (330ml)
+							</input>
+						</label>
+					</div>
+					<hr />
+					<h6 class="font-weight-bold">Title</h6>
+					<h6 id="title">–</h6>
+					<h6 class="font-weight-bold">Description</h6>
+					<p id="description">–</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col p-4 text-center bg-dark text-light">
+					<h4>Gallery</h4>
+				</div>
+			</div>
+			<div class="row" id="gallery">
+				<div class="col-sm-4">
+					<img class="w-100" src="images/bottle-coca-cola-original-taste.jpg" />
+				</div>
+				<div class="col-sm-4">
+					<img class="w-100" src="images/bottle-coca-cola-original-taste.jpg" />
+				</div>
+				<div class="col-sm-4">
+					<img class="w-100" src="images/bottle-coca-cola-original-taste.jpg" />
+				</div>
+				<div class="col-sm-4">
+					<img class="w-100" src="images/bottle-coca-cola-original-taste.jpg" />
+				</div>
+				<div class="col-sm-4">
+					<img class="w-100" src="images/bottle-coca-cola-original-taste.jpg" />
+				</div>
+				<div class="col-sm-4">
+					<img class="w-100" src="images/bottle-coca-cola-original-taste.jpg" />
+				</div>
+				<div class="col-sm-4">
+					<img class="w-100" src="images/bottle-coca-cola-original-taste.jpg" />
+				</div>
+				<div class="col-sm-4">
+					<img class="w-100" src="images/bottle-coca-cola-original-taste.jpg" />
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer class="border-top border-primary">
+			<div class="container-fluid">
+				<div class="row bg-dark p-4">
+					<div class="col text-center">
+						<a class="btn btn-outline-light" href="#" role="button"> Top <i class="fa-solid fa-caret-up"></i></a>
+					</div>
+				</div>
+				<div class="row bg-light p-4">
+					<div class="col-md-6 text-md-right text-center p-0 order-md-12">
+						<div class="">
+							<a class="btn btn-outline-dark btn-floating m-1" href="https://www.facebook.com/Coca-Cola/" role="button">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+							<a class="btn btn-outline-dark btn-floating m-1" href="https://twitter.com/CocaCola" role="button">
+								<i class="fab fa-twitter"></i>
+							</a>
+							<a class="btn btn-outline-dark btn-floating m-1" href="https://www.youtube.com/user/cocacolacompanyuk"
+								role="button">
+								<i class="fab fa-youtube"></i>
+							</a>
+							<a class="btn btn-outline-dark btn-floating m-1"
+								href="https://www.linkedin.com/company/the-coca-cola-company" role="button">
+								<i class="fab fa-linkedin"></i>
+							</a>
+							<a class="btn btn-outline-dark btn-floating m-1" href="https://www.instagram.com/cocacola/" role="button">
+								<i class="fab fa-instagram"></i>
+							</a>
+							<a class="btn btn-outline-dark btn-floating m-1" href="https://github.com/The-Coca-Cola-Company"
+								role="button">
+								<i class="fab fa-github"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col d-md-none">
+						<hr />
+					</div>
+					<div class="col-md-6 text-md-left text-center p-0 order-md-1"> Copyleft © 2022 Jack C. Lloyd.<br />All lefts
+						reserved. </div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

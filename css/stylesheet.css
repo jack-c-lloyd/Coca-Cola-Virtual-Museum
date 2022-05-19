@@ -1,0 +1,72 @@
+/*****************************************************************************
+*                                 BOOTSTRAP                                  *
+*****************************************************************************/
+
+.dropdown-toggle::after {
+	display: none;
+}
+
+.dropdown-toggle:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+/*****************************************************************************
+*                                   X3DOM                                    *
+*****************************************************************************/
+
+/* .x3dom-canvas {
+	width: 100% !important;
+	height: auto !important;
+} */
+
+/*****************************************************************************
+*                                   CUSTOM                                   *
+*****************************************************************************/
+
+@font-face {
+	font-family: "coca-cola";
+	src: url("fonts/coca-cola.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "loki-cola";
+	src: url("fonts/loki-cola.ttf") format("truetype");
+}
+
+.logo-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.logo-container>*:nth-child(2) {
+	font-family: "loki-cola";
+	font-size: 4em;
+	margin: 0 0.2em;
+	word-spacing: -0.175em;
+}
+
+.logo-container>*:nth-child(2)::first-letter {
+	font-family: "loki-cola"; /* DO NOT REMOVE */
+	font-size: 0.875em;
+	letter-spacing: -0.01em;
+}
+
+.logo-container>*:nth-child(2)>*:last-child {
+	position: relative;
+	top: 0.1875em;
+}
+
+.logo-container>*:not(:nth-child(2)) {
+	font-size: 1em;
+	font-weight: bolder;
+}
+
+.outline {
+  text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000;
+}
